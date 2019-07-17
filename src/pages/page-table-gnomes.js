@@ -11,15 +11,9 @@ import LayoutTable from '../components/layoutTable';
 
 export default class TableGnomes extends Component {
   
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedRow: null,
-      users: [],
-    }
-
-    this.tableRef = React.createRef();
+  state = {
+    selectedRow: null,
+    users: [],
   }
 
   componentDidMount() {
@@ -93,14 +87,6 @@ export default class TableGnomes extends Component {
                 backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? '#EEE' : '#FFF',
               }),
             }}
-            actions={[
-              {
-                icon: 'refresh',
-                tooltip: 'Refresh Data',
-                isFreeAction: true,
-                onClick: () => this.tableRef.current && this.tableRef.current.onQueryChange(),
-              }
-            ]}
             onRowClick={((evt, selectedRow) => this.setState({ selectedRow }))}
           />
       </div>
