@@ -15,13 +15,26 @@ export default class TableGnomes extends Component {
     super(props);
 
     this.state = {
-      selectedRow: null
+      selectedRow: null,
+      users: [],
     }
 
     this.tableRef = React.createRef();
   }
 
+  componentDidMount() {
+    fetch('https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json')
+      .then(results => results.json())
+      .then(data => {
+        this.setState({
+          users: data.Brastlewark,
+        })
+      })
+    .catch(err => console.log(err))
+  }
+
   render() {
+    console.log(this.state.users)
     return (
       <LayoutTable location={this.props.location}>
         <Link to="/" style={{ top:'10px', right: '10px', position: 'absolute'}}>Go back to the homepage</Link>
@@ -40,7 +53,7 @@ export default class TableGnomes extends Component {
                 field: 'thumbnail',
                 render: rowData => (
                   <img
-                    style={{ width: 110, height: 110, borderRadius: '100%' }}
+                    style={{ width: 80, height: 80, borderRadius: '100%' }}
                     src={rowData.thumbnail}
                     alt='Gnomes img'
                   />
@@ -71,20 +84,7 @@ export default class TableGnomes extends Component {
                 )
               },
             ]}
-            data={query =>
-              new Promise((resolve) => {
-                let url = 'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json'
-                fetch(url)
-                  .then(response => response.json())
-                  .then(result => {
-                    resolve({
-                      data: result.Brastlewark,
-                      page: query.page,
-                      totalCount:  result.Brastlewark.length,
-                    })
-                  })
-              })
-            }
+            data={this.state.users}
             options={{
               search: true,
               pageSizeOptions: [20, 50, 100, 500, 1000],
