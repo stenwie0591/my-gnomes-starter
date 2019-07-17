@@ -14,7 +14,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <SEO title="A census blog demonstrating what Gnomes can do" />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -38,6 +38,7 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
+        <Link to="/page-table-gnomes/" style={{fontWeight: 'bold', fontSize: '23px'}}>Go to inhabitants of Brastlewark</Link>
       </Layout>
     )
   }

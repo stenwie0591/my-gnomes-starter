@@ -67,6 +67,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <Link to="/">Go back to the homepage</Link>
       </Layout>
     )
   }
