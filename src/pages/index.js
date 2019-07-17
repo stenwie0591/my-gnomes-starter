@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import { Video } from "../components/video";
 
 class BlogIndex extends React.Component {
   render() {
@@ -16,6 +17,10 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="A census blog demonstrating what Gnomes can do" />
         <Bio />
+        <Video
+        videoSrcURL="https://www.youtube.com/embed/znD8tXq6edg"
+        videoTitle="i nani"
+        />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
