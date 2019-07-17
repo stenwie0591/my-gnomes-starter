@@ -81,8 +81,8 @@ export default class TableGnomes extends Component {
             data={this.state.users}
             options={{
               search: true,
-              pageSizeOptions: [20, 50, 100, 500, 1000],
-              pageSize: 20,
+              pageSizeOptions: [5, 10, 20, 50],
+              pageSize: 5,
               rowStyle: rowData => ({
                 backgroundColor: (this.state.selectedRow && this.state.selectedRow.tableData.id === rowData.tableData.id) ? '#EEE' : '#FFF',
               }),
